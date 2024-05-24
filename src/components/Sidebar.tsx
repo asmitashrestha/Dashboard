@@ -10,7 +10,9 @@ import {
   CommandList,
   CommandSeparator,
 } from "./ui/command";
+import { Bell, Briefcase, EarthLock, Inbox, MessageSquareShare, Settings, User } from "lucide-react";
 export const Sidebar = () => {
+
   const menuList = [
     {
       group: "General",
@@ -18,18 +20,22 @@ export const Sidebar = () => {
         {
           link: "/",
           text: "Pofile",
+          icons:<User/>
         },
         {
           link: "/",
           text: "Billing",
+          icons:<Briefcase />
         },
         {
           link: "/",
           text: "Inbox",
+          icons:<Inbox />
         },
         {
           link: "/",
           text: "Notification",
+          icons:<Bell />
         },
       ],
     },
@@ -39,30 +45,38 @@ export const Sidebar = () => {
         {
           link: "/",
           text: "General Settings",
+          icons:<Settings />,
         },
         {
           link: "/",
           text: "Privacy",
+          icons:<EarthLock />
         },
         {
           link: "/",
           text: "Logs",
+          icons:<MessageSquareShare />
         },
       ],
     },
   ];
+
   return (
-    <div className="flex flex-col gap-4 w-[250px] min-w-[250px] border-r min-h-screen p-4">
+    <div className="fixed flex flex-col gap-4 w-[250px] min-w-[250px] border-r min-h-screen p-4">
       <div className="">
         <UserItem />
       </div>
       <div className="grow">
-        <Command>
-          <CommandList>
+        <Command style={{overflow: "visible"}}>
+          <CommandList style={{overflow:"visible"}}>
             {menuList.map((menu: any, i: number) => (
               <CommandGroup key={i} heading={menu.group}>
                 {menu.items.map((option: any, i: number) => (
-                  <CommandItem key={i}>{option.text}</CommandItem>
+                  <CommandItem key={i} 
+                  className="flex gap-2 cursor-pointer">
+                    {option.icons}
+                    {option.text}
+                    </CommandItem>
                 ))}
               </CommandGroup>
             ))}
