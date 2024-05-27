@@ -1,12 +1,15 @@
 "use client";
 import { ResponsiveLine } from "@nivo/line";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
-const MyResponsiveLine = ({data}:{data: any[]}) => (
+const MyResponsiveLine = ({ data }: { data: any[] }) => (
   <ResponsiveLine
     data={data}
     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
@@ -350,8 +353,14 @@ export default function General() {
     },
   ];
   return (
-    <div className="w-full h-[500px]">
-      <MyResponsiveLine data={data} />
-    </div>
+    <Card className="w-[99%] h-[380px]">
+      <CardHeader>
+        <CardTitle>Analytics</CardTitle>
+        <CardDescription>Analytics of this week</CardDescription>
+      </CardHeader>
+      <CardContent className="h-[300px]">
+        <MyResponsiveLine data={data} />
+      </CardContent>
+    </Card>
   );
 }

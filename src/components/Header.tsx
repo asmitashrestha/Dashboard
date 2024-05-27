@@ -34,7 +34,7 @@ export default function Header() {
         <DropdownMenu>
           <DropdownMenuTrigger>
             {" "}
-            <Button className="relative" variant="outline" size="icon">
+            <Button className="relative mr-4" variant="outline" size="icon">
               <div
                 className={`h-3 absolute -top-2 -right-2 w-3 rounded-full my-1 ${
                   notification.find((x: any) => x.read === true)
